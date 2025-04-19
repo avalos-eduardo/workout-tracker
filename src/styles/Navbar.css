@@ -54,7 +54,7 @@
 
   @media screen and (max-width: 650px) {
     .navbar {
-        padding: 0 2rem 0 2rem;
+        padding: 0 2rem 0;
     }
     
     .navbar p {
@@ -69,6 +69,10 @@
     .nav-button {
         width: 40px;
         height: 40px;
+    }
+
+    .expanded-navbar {
+        padding: 0rem 0rem 1rem 2rem;
     }
 
     .expanded-navbar li {

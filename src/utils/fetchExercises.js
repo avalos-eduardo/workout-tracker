@@ -22,6 +22,7 @@ export const getExerciseInfo = async () => {
                     bodyPart: exercise.bodyPart,
                     instructions: exercise.instructions,
                     equipment: exercise.equipment,
+                    gifUrl: exercise.gifUrl,
                 }
             })
         })

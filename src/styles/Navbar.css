@@ -52,7 +52,7 @@
   }
   
 
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 675px) {
     .navbar {
         padding: 0 2rem 0;
     }

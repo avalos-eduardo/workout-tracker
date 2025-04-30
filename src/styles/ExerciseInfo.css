@@ -50,3 +50,17 @@
     font-size: 1.5rem;
     text-align: center;
 }
+
+@media screen and (max-width: 675px) {
+    .exercise-info {
+        padding: 2rem;
+    }
+
+    .exercise-gif {
+        height: 15rem;
+    }
+ 
+    .instructions ul {
+        font-size: 1.25rem;
+    }
+}

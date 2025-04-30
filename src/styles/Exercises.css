@@ -5,6 +5,7 @@ header {
 
 .heading {
     font-family: "Play", sans-serif;
+    font-weight: 700;
     font-size: 2rem;
     margin: 0 0 1.25rem 0;
 }
@@ -62,14 +63,15 @@ header {
     background-color: #1d495f;
     color: white;
     font-family: "Inter", sans-serif;
+    font-weight: 600;
     font-size: 1.15rem;
-    font-weight: 700;
     letter-spacing: 1px;
     overflow: hidden ;
 }
 
 .loading {
     font-family: "Play", sans-serif;
+    font-weight: 700;
     text-align: center;
 }
 

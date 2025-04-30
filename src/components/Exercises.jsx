@@ -1,5 +1,4 @@
 import "../styles/Exercises.css";
-import "@fontsource/inter/700";
 import searchIcon from "../assets/search.png";
 import ExerciseList from "./ExerciseList";
 import { useEffect, useState } from "react";

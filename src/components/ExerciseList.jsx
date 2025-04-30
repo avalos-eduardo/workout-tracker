@@ -1,12 +1,8 @@
 import "../styles/ExerciseList.css";
+import { capitalizeWords } from "../utils/capitalizeWords";
+import { Link } from "react-router-dom";
 
 export default function ExerciseList({ exercises }) {
-  const capitalizeWords = (str) =>
-    str
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-
   if (exercises.length === 0) {
     return <p className="no-results">No exercises found.</p>;
   }
@@ -14,9 +10,13 @@ export default function ExerciseList({ exercises }) {
   return (
     <section className="exercise-list">
       {exercises.map((exercise) => (
-        <div className="exercise-list-item" key={exercise.id}>
+        <Link
+          to={`/exercise/${exercise.id}`}
+          key={exercise.id}
+          className="exercise-list-item"
+        >
           <p>{capitalizeWords(exercise.name)}</p>
-        </div>
+        </Link>
       ))}
     </section>
   );

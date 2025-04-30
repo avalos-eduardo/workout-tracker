@@ -1,0 +1,52 @@
+.exercise-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 2rem 4rem 2rem 4rem;
+    font-family: "Play", sans-serif;
+    text-align: center;
+}
+
+.exercise-gif {
+    height: 20rem;
+}
+
+.exercise-info h1 {
+    margin: 1rem 0 .5rem 0;
+    font-family: "Play", sans-serif;
+}
+
+.exercise-info p {
+    font-size: 1.4rem;
+}
+
+.go-back {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding-bottom: 2rem;
+}
+
+.back-icon {
+    height: 25px;
+    padding-right: 1rem;
+}
+
+.instructions ul {
+    font-size: 1.4rem;
+    list-style-type: none;
+}
+
+.instructions li {
+    padding-bottom: .25rem;
+}
+
+.not-found {
+    padding-top: 2rem;
+    font-family: "Play", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-align: center;
+}

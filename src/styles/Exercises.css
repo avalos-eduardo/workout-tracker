@@ -3,13 +3,6 @@ header {
     padding: 2rem 4rem 2rem 4rem;
 }
 
-.heading {
-    font-family: "Play", sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    margin: 0 0 1.25rem 0;
-}
-
 .search-bar {
     display: flex;
     align-items: center;

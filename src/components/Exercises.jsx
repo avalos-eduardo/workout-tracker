@@ -1,6 +1,8 @@
 import "../styles/Exercises.css";
+import "../styles/Heading.css";
 import searchIcon from "../assets/search.png";
 import ExerciseList from "./ExerciseList";
+import Heading from "./Heading";
 import { useEffect, useState } from "react";
 import { getExerciseInfo } from "../utils/fetchExercises";
 
@@ -44,7 +46,7 @@ export default function Exercises() {
   return (
     <>
       <header>
-        <p className="heading">Exercises</p>
+        <Heading headingTitle={"Exercises"} />
         <div className="search-bar">
           <img src={searchIcon} alt="Search icon" />
           <input

@@ -22,7 +22,7 @@ export default function ExerciseInfo() {
 
   return (
     <div className="exercise-info">
-      <Link className="go-back" to="/">
+      <Link className="go-back" to="/exercises">
         <img src={backIcon} alt="back icon" className="back-icon" />
         <p>Go back</p>
       </Link>

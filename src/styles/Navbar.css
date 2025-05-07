@@ -53,6 +53,10 @@
     cursor: pointer;
   }
   
+  .link {
+    text-decoration: none;
+    color: white;
+  }
 
   @media screen and (max-width: 675px) {
     .navbar {

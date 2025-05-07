@@ -6,6 +6,9 @@ import "@fontsource/inter/600";
 import Navbar from "./components/Navbar";
 import Exercises from "./components/Exercises";
 import ExerciseInfo from "./components/ExerciseInfo";
+import Dashboard from "./components/Dashboard";
+import Start from "./components/Start";
+import History from "./components/History";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -14,8 +17,12 @@ export default function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Exercises />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/exercises" element={<Exercises />} />
           <Route path="/exercise/:id" element={<ExerciseInfo />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/start" element={<Start />} />
         </Routes>
       </Router>
     </>

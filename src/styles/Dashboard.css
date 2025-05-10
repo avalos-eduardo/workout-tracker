@@ -1,0 +1,57 @@
+.widget-container {
+    display: flex;
+    height: auto;
+    padding: 0rem 4rem 0rem 4rem;
+    min-height: 30rem;
+}
+
+.profile-container {
+    flex: 1;
+    overflow: hidden;
+}
+
+.profile-container div {
+    text-align: center;
+    justify-content: space-around;
+}
+
+.date-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.date {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.misc-widget-container {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    padding: 0rem 0rem 0rem 2rem;
+}
+
+.workout-widgets {
+    display: flex;
+    flex: 1;
+    gap: 1rem;
+}
+
+.workout-widgets div {
+    flex: 1;
+}
+
+.inspiration-widget {
+    flex: 1;
+    padding: 3rem 0rem 0rem 0rem;
+}
+
+@media screen and (max-width: 675px) {
+    .widget-container {
+        display: flex;
+        height: auto;
+        padding: 0rem 2rem 0rem 2rem;
+        min-height: 30rem;
+    }
+}

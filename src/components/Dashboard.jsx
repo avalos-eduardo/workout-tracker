@@ -5,9 +5,22 @@ import Heading from "./Heading";
 import ProfilePicture from "./ProfilePicture";
 import UserGreeting from "./UserGreeting";
 import Widget from "./Widget";
+import fetchQuote from "../utils/fetchQuotes";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const date = new Date().toLocaleDateString();
+  const [quote, setQuote] = useState(null);
+
+  useEffect(() => {
+    const getQuote = async () => {
+      const quotes = await fetchQuote();
+      if (quotes && quotes.length > 0) {
+        setQuote(quotes[0]);
+      }
+    };
+    getQuote();
+  }, []);
 
   return (
     <>
@@ -31,7 +44,16 @@ export default function Dashboard() {
             <Widget title={"Workouts This Week"} />
           </div>
           <div className="inspiration-widget">
-            <Widget title={"Today's Inspirational Quote"} />
+            <Widget title={"Today's Inspirational Quote"}>
+              {quote ? (
+                <div className="quote-container">
+                  <p className="quote-text">"{quote.quoteText}"</p>
+                  <p className="quote-author">- {quote.quoteAuthor}</p>
+                </div>
+              ) : (
+                <p>Loading quote...</p>
+              )}
+            </Widget>
           </div>
         </div>
       </section>

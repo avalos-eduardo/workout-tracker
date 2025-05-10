@@ -48,4 +48,11 @@
     cursor: pointer;
     font-weight: bold;
   }
+
+  @media screen and (max-width: 760px) {
+    .profile-picture-container {
+      width: 8rem;
+      height: 8rem;
+    }
+}
   

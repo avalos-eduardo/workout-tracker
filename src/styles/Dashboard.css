@@ -30,12 +30,14 @@
     flex-direction: column;
     flex: 2;
     padding: 0rem 0rem 0rem 2rem;
+    min-height: 30rem;
 }
 
 .workout-widgets {
     display: flex;
     flex: 1;
     gap: 1rem;
+    min-height: 12rem;
 }
 
 .workout-widgets div {
@@ -43,8 +45,9 @@
 }
 
 .inspiration-widget {
-    flex: 1;
+    flex: 2;
     padding: 3rem 0rem 0rem 0rem;
+    max-height: 21rem;
 }
 
 @media screen and (max-width: 675px) {
@@ -53,5 +56,31 @@
         height: auto;
         padding: 0rem 2rem 0rem 2rem;
         min-height: 30rem;
+        flex-direction: column;
     }
+
+    .workout-widgets {
+        gap: 3rem;
+        flex-direction: column;
+        min-height: 30rem;
+    }
+
+    .misc-widget-container {
+        height: auto;
+        padding: 0rem;
+        margin-top: 3rem;
+    }
+
+}
+
+@media screen and (max-width: 760px) {
+    .date-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+
+    .date {
+        font-size: 1.5rem;
+    }
+
 }

@@ -1,0 +1,47 @@
+.start-empty{
+    color: white;
+    background-color: #1d495f;
+    margin: 0rem 4rem 2rem 4rem;
+    border-radius: 12px;
+    border: none;
+    text-align: center;
+    height: 2.25rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.template-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-new-template {
+    margin: 2rem 4rem 2rem 0rem;
+    background-color: #1d495f;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+    overflow: hidden ;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    height: 2.25rem;
+    width: 15rem;
+}
+
+@media screen and (max-width: 675px) {
+    .start-empty{
+        margin: 0rem 2rem 2rem 2rem;
+    }
+
+    .add-new-template {
+        margin: 2rem 2rem 2rem 0rem;
+    }
+}

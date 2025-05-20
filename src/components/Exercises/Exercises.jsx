@@ -1,10 +1,9 @@
-import "../styles/Exercises.css";
-import "../styles/Heading.css";
-import searchIcon from "../assets/search.png";
+import "./Exercises.css";
+import searchIcon from "../../assets/search.png";
 import ExerciseList from "./ExerciseList";
-import Heading from "./Heading";
+import Heading from "../Common/Heading";
 import { useEffect, useState } from "react";
-import { getExerciseInfo } from "../utils/fetchExercises";
+import { getExerciseInfo } from "../../utils/fetchExercises";
 
 export default function Exercises() {
   const [exercises, setExercises] = useState([]);

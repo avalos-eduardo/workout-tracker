@@ -1,14 +1,14 @@
-import "./styles/App.css";
+import "./App.css";
 import "@fontsource/play/700";
 import "@fontsource/play";
 import "@fontsource/inter";
 import "@fontsource/inter/600";
-import Navbar from "./components/Navbar";
-import Exercises from "./components/Exercises";
-import ExerciseInfo from "./components/ExerciseInfo";
-import Dashboard from "./components/Dashboard";
-import Start from "./components/Start";
-import History from "./components/History";
+import Navbar from "./components/Common/Navbar";
+import Exercises from "./components/Exercises/Exercises";
+import ExerciseInfo from "./components/Exercises/ExerciseInfo";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Start from "./components/Start/Start";
+import History from "./components/History/History";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function App() {

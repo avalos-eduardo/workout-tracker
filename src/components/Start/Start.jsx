@@ -1,5 +1,5 @@
-import Heading from "./Heading";
-import "../styles/Start.css";
+import Heading from "../Common/Heading";
+import "./Start.css";
 
 export default function Start() {
   return (

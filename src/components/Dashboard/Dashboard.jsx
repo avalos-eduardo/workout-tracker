@@ -1,11 +1,9 @@
-import "../styles/Dashboard.css";
-import "../styles/Heading.css";
-import "../styles/Widget.css";
-import Heading from "./Heading";
-import ProfilePicture from "./ProfilePicture";
-import UserGreeting from "./UserGreeting";
-import Widget from "./Widget";
-import fetchQuote from "../utils/fetchQuotes";
+import "./Dashboard.css";
+import Heading from "../Common/Heading";
+import ProfilePicture from "../Common/ProfilePicture";
+import UserGreeting from "../Common/UserGreeting";
+import Widget from "../Common/Widget";
+import fetchQuote from "../../utils/fetchQuotes";
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {

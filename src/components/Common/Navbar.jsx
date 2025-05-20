@@ -1,6 +1,6 @@
-import "../styles/Navbar.css";
-import dumbbell from "../assets/dumbbell.png";
-import menuIcon from "../assets/menu.png";
+import "./Navbar.css";
+import dumbbell from "../../assets/dumbbell.png";
+import menuIcon from "../../assets/menu.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 

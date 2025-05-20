@@ -1,5 +1,5 @@
-import "../styles/ExerciseList.css";
-import { capitalizeWords } from "../utils/capitalizeWords";
+import "./ExerciseList.css";
+import { capitalizeWords } from "../../utils/capitalizeWords";
 import { Link } from "react-router-dom";
 
 export default function ExerciseList({ exercises }) {

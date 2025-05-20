@@ -1,8 +1,8 @@
-import { capitalizeWords } from "../utils/capitalizeWords";
+import { capitalizeWords } from "../../utils/capitalizeWords";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "../styles/ExerciseInfo.css";
-import backIcon from "../assets/back.png";
+import "./ExerciseInfo.css";
+import backIcon from "../../assets/back.png";
 
 export default function ExerciseInfo() {
   const { id } = useParams();

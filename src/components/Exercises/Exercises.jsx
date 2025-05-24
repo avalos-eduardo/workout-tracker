@@ -4,9 +4,10 @@ import ExerciseList from "./ExerciseList";
 import Heading from "../Common/Heading";
 import { useEffect, useState } from "react";
 import { getExerciseInfo } from "../../utils/fetchExercises";
+import { useWorkoutContext } from "../../contexts/workoutContext";
 
 export default function Exercises() {
-  const [exercises, setExercises] = useState([]);
+  const { state, dispatch } = useWorkoutContext();
   const [searchInput, setSearchInput] = useState("");
   const [selectedEquipment, setSelectedEquipment] = useState("all");
   const [selectedMuscleGroup, setSelectedMuscleGroup] = useState("all");
@@ -16,19 +17,23 @@ export default function Exercises() {
     const fetchExercises = async () => {
       const stored = localStorage.getItem("exercises");
       if (stored) {
-        setExercises(JSON.parse(stored));
+        dispatch({ type: "SET_EXERCISES", payload: JSON.parse(stored) });
       } else {
         const fetched = await getExerciseInfo();
         localStorage.setItem("exercises", JSON.stringify(fetched));
-        setExercises(fetched);
+        dispatch({ type: "SET_EXERCISES", payload: fetched });
       }
       setLoading(false);
     };
 
-    fetchExercises();
-  }, []);
+    if (state.exercises.length === 0) {
+      fetchExercises();
+    } else {
+      setLoading(false);
+    }
+  }, [dispatch, state.exercises.length]);
 
-  const filteredExercises = exercises.filter((exercise) => {
+  const filteredExercises = state.exercises.filter((exercise) => {
     const matchesSearch = exercise.name
       .toLowerCase()
       .includes(searchInput.toLowerCase());

@@ -10,7 +10,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Start from "./components/Start/Start";
 import History from "./components/History/History";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { WorkoutProvider } from "./contexts/WorkoutContext";
+import { WorkoutProvider } from "./contexts/WorkoutProvider";
 
 export default function App() {
   return (

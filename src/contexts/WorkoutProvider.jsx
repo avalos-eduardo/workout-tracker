@@ -1,7 +1,6 @@
-import { createContext, useContext, useReducer } from "react";
+import { useReducer } from "react";
+import { WorkoutContext } from "./workoutContext";
 import workoutReducer, { initialWorkoutState } from "./workoutReducer";
-
-const WorkoutContext = createContext(null);
 
 export function WorkoutProvider({ children }) {
   const [state, dispatch] = useReducer(workoutReducer, initialWorkoutState);
@@ -11,8 +10,4 @@ export function WorkoutProvider({ children }) {
       {children}
     </WorkoutContext.Provider>
   );
-}
-
-export function useWorkoutContext() {
-  return useContext(WorkoutContext);
 }

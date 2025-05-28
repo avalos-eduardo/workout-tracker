@@ -1,0 +1,15 @@
+.active-workout {
+    display: flex;
+    flex-direction: column;
+    padding: 0 4rem 2rem 4rem;
+}
+
+.workout-title-input {
+    background-color: transparent;
+    height: 2rem;
+    width: 20rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+}

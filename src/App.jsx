@@ -9,8 +9,9 @@ import ExerciseInfo from "./components/Exercises/ExerciseInfo";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Start from "./components/Start/Start";
 import History from "./components/History/History";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ActiveWorkout from "./components/Start/ActiveWorkout";
 import { WorkoutProvider } from "./contexts/WorkoutProvider";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/exercise/:id" element={<ExerciseInfo />} />
             <Route path="/history" element={<History />} />
             <Route path="/start" element={<Start />} />
+            <Route path="/start/active" element={<ActiveWorkout />} />
           </Routes>
         </Router>
       </WorkoutProvider>

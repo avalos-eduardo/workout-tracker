@@ -50,6 +50,7 @@ header {
     cursor: pointer;
     border-radius: 15px;
     text-align: center;
+    text-align-last: center;
     width: 48%;
     height: 2.5rem;
     border: none;

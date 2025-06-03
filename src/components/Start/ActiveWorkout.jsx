@@ -1,5 +1,6 @@
 import "./ActiveWorkout.css";
 import Heading from "../Common/Heading";
+import WorkoutExercise from "./WorkoutExercise";
 import { useWorkoutContext } from "../../contexts/workoutContext";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -55,13 +56,29 @@ export default function ActiveWorkout() {
           onChange={handleTitleChange}
         />
         <p className="workout-timer">Time Elapsed: {formatTime(elapsedTime)}</p>
+        <hr />
 
-        <section className="exercise-list-placeholder">
-          <p>No exercises yet. Add some below!</p>
+        <section className="exercises-list">
+          {state.currentWorkout.exercises.length === 0 ? (
+            <p>No exercises yet. Add some below!</p>
+          ) : (
+            state.currentWorkout.exercises.map((exercise) => (
+              <WorkoutExercise
+                key={exercise.id}
+                exercise={exercise}
+                dispatch={dispatch}
+              />
+            ))
+          )}
         </section>
 
         <div className="active-buttons">
-          <button className="add-exercises">Add Exercises</button>
+          <button
+            className="add-exercises"
+            onClick={() => navigate("/start/add-exercises")}
+          >
+            Add Exercises
+          </button>
           <button className="finish-workout" onClick={handleFinishWorkout}>
             Finish Workout
           </button>

@@ -32,38 +32,47 @@ export default function workoutReducer(state, action) {
           }
         }
 
-    case "ADD_EXERCISE_TO_WORKOUT":
+    case "ADD_EXERCISE_TO_WORKOUT": {
+      const alreadyAdded = state.currentWorkout.exercises.some((ex) => ex.id === action.payload.id);
+      if (alreadyAdded) return state;
+
       return {
         ...state,
         currentWorkout: {
           ...state.currentWorkout,
-          exercises: [...state.currentWorkout.exercises, action.payload],
+          exercises: [
+            ...state.currentWorkout.exercises,
+            {
+              ...action.payload,
+              sets: [{weight: 0, reps: 0}],
+              }
+          ]
         },
       };
-
+    }
     case "REMOVE_EXERCISE_FROM_WORKOUT":
       return {
         ...state,
         currentWorkout: {
           ...state.currentWorkout,
           exercises: state.currentWorkout.exercises.filter(
-            (ex) => ex.id !== action.payload
+            (exercise) => exercise.id !== action.payload
           ),
         },
       };
 
-    case "ADD_SET_TO_EXERCISE":
+    case "ADD_SET":
       return {
         ...state,
         currentWorkout: {
           ...state.currentWorkout,
-          exercises: state.currentWorkout.exercises.map((ex) =>
-            ex.id === action.payload.exerciseId
+          exercises: state.currentWorkout.exercises.map((exercise) =>
+            exercise.id === action.payload.exerciseId
               ? {
-                  ...ex,
-                  sets: [...ex.sets, action.payload.newSet],
+                  ...exercise,
+                  sets: [...exercise.sets || [], {weight: 0, reps: 0 }],
                 }
-              : ex
+              : exercise
           ),
         },
       };
@@ -73,17 +82,17 @@ export default function workoutReducer(state, action) {
         ...state,
         currentWorkout: {
           ...state.currentWorkout,
-          exercises: state.currentWorkout.exercises.map((ex) =>
-            ex.id === action.payload.exerciseId
+          exercises: state.currentWorkout.exercises.map((exercise) =>
+            exercise.id === action.payload.exerciseId
               ? {
-                  ...ex,
-                  sets: ex.sets.map((set, idx) =>
-                    idx === action.payload.setIndex
-                      ? { ...set, ...action.payload.updatedData }
+                  ...exercise,
+                  sets: exercise.sets.map((set, index) =>
+                    index === action.payload.setIndex
+                      ? { ...set, ...action.payload.updates }
                       : set
                   ),
                 }
-              : ex
+              : exercise
           ),
         },
       };
@@ -93,15 +102,13 @@ export default function workoutReducer(state, action) {
         ...state,
         currentWorkout: {
           ...state.currentWorkout,
-          exercises: state.currentWorkout.exercises.map((ex) =>
-            ex.id === action.payload.exerciseId
+          exercises: state.currentWorkout.exercises.map((exercise) =>
+            exercise.id === action.payload.exerciseId
               ? {
-                  ...ex,
-                  sets: ex.sets.filter(
-                    (_, idx) => idx !== action.payload.setIndex
-                  ),
+                  ...exercise,
+                  sets: exercise.sets.filter((_, i) => i !== action.payload.setIndex),
                 }
-              : ex
+              : exercise
           ),
         },
       };

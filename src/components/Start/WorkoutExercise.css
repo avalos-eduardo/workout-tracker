@@ -1,0 +1,65 @@
+.workout-exercise {
+    margin-bottom: 2rem;
+}
+
+.workout-exercise h2 {
+    font-family: "Play", sans-serif;
+    margin-bottom: .25rem;
+}
+
+.workout-exercise label {
+    font-family: "Inter", sans-serif;
+    margin-right: .5rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.workout-exercise input {
+    width: 4rem;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding-left: 2px;
+    margin-right: .75rem;
+    font-size: 1.25rem;
+}
+
+.exercise-title {
+    display: flex;
+}
+
+.exercise-title button {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(154, 13, 13);
+    color: white;
+    font-family: "Play", sans-serif;
+    height: 1.75rem;
+    width: 8rem;
+    cursor: pointer;
+    margin-left: 2rem;
+}
+
+.set-row {
+    margin-bottom: .5rem;
+}
+
+.remove-set {
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    width: 5rem;
+    cursor: pointer;
+}
+
+.add-set {
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(91, 57, 116);
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Play", sans-serif;
+    margin-top: 1rem;
+    height: 1.75rem;
+    width: 8rem;
+    cursor: pointer;
+}

@@ -23,6 +23,11 @@
     word-break: keep-all;
     cursor: pointer;
     overflow: hidden;
+    text-decoration: none;
+}
+
+.exercise-list-item:hover {
+    background-color: #276f91;
 }
 
 .no-results {

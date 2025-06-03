@@ -5,6 +5,7 @@
 .workout-exercise h2 {
     font-family: "Play", sans-serif;
     margin-bottom: .25rem;
+    max-width: 20rem;
 }
 
 .workout-exercise label {
@@ -25,6 +26,8 @@
 
 .exercise-title {
     display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .exercise-title button {
@@ -40,6 +43,7 @@
 }
 
 .set-row {
+    font-size: 16px;
     margin-bottom: .5rem;
 }
 
@@ -62,4 +66,40 @@
     height: 1.75rem;
     width: 8rem;
     cursor: pointer;
+}
+
+@media screen and (max-width: 675px) {
+    .workout-exercise h2 {
+        font-size: 1.25rem;
+        max-width: 10rem;
+    }
+
+    .workout-exercise label {
+        font-size: .8rem; 
+    }
+
+    .workout-exercise input {
+        font-size: .8rem;
+        width: 3rem;
+    }
+
+    .exercise-title button {
+        font-size: .6rem;
+    }
+
+    .remove-set {
+        font-size: .8rem;
+        width: 3rem;
+    }
+
+    .add-set {
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .remove-set {
+        margin: .65rem 0 .65rem 0;
+        width: 100%;
+    }
+
 }

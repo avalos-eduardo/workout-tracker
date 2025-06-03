@@ -50,10 +50,18 @@
 
 @media screen and (max-width: 675px) {
     .exercise-list {
-        margin: 0rem 2rem 2rem 2rem;
+        margin: 0 2rem 2rem 2rem;
     }
 
     .exercise-list-item {
         font-size: .65rem;
+    }
+
+    .cancel {
+        margin: 0 2rem 2rem 2rem;
+    }
+
+    .cancel button {
+        font-size: .75rem;
     }
 }

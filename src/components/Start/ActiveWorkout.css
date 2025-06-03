@@ -45,3 +45,19 @@
 .exercises-list {
     padding: 3rem 0 0 0;
 }
+
+.cancel-workout {
+    background-color: rgb(154, 13, 13);
+}
+
+@media screen and (max-width: 675px) {
+    .active-workout {
+        padding: 0 2rem 2rem 2rem;
+    }
+
+    .active-buttons > * {
+        font-size: .8rem;
+        width: 100%;
+        margin: 1rem 1rem 1rem 0;
+    }
+}

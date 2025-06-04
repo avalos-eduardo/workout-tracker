@@ -1,0 +1,46 @@
+.past-workout {
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.past-workout h2 {
+  font-family: "Play", sans-serif;
+}
+
+.past-date {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: "Inter", sans-serif;
+}
+
+.past-workout-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.exercise-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+  font-family: "Play", sans-serif;
+}
+
+.exercise-left,
+.exercise-right {
+  flex: 1;
+}
+
+.exercise-left {
+  text-align: left;
+  font-weight: bold;
+}
+
+.exercise-right {
+  text-align: right;
+  font-style: italic;
+}

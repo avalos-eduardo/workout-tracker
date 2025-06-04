@@ -8,32 +8,34 @@ export const initialWorkoutState = {
 export default function workoutReducer(state, action) {
   switch (action.type) {
     case "SET_EXERCISES":
-      return { 
+      return {
         ...state,
-        exercises: action.payload, 
+        exercises: action.payload,
       };
 
     case "START_WORKOUT":
-      return { 
+      return {
         ...state,
         currentWorkout: {
           title: "New Workout",
           startTime: Date.now(),
           exercises: [],
-      },
-    };
+        },
+      };
 
-    case "UPDATE_WORKOUT_TILE":
-        return {
-          ...state,
-          currentWorkout: {
-            ...state.currentWorkout,
-            title: action.payload,
-          }
-        }
+    case "UPDATE_WORKOUT_TITLE":
+      return {
+        ...state,
+        currentWorkout: {
+          ...state.currentWorkout,
+          title: action.payload,
+        },
+      };
 
     case "ADD_EXERCISE_TO_WORKOUT": {
-      const alreadyAdded = state.currentWorkout.exercises.some((ex) => ex.id === action.payload.id);
+      const alreadyAdded = state.currentWorkout.exercises.some(
+        (ex) => ex.id === action.payload.id
+      );
       if (alreadyAdded) return state;
 
       return {
@@ -44,9 +46,9 @@ export default function workoutReducer(state, action) {
             ...state.currentWorkout.exercises,
             {
               ...action.payload,
-              sets: [{weight: 0, reps: 0}],
-              }
-          ]
+              sets: [{ weight: 0, reps: 0 }],
+            },
+          ],
         },
       };
     }
@@ -70,7 +72,7 @@ export default function workoutReducer(state, action) {
             exercise.id === action.payload.exerciseId
               ? {
                   ...exercise,
-                  sets: [...exercise.sets || [], {weight: 0, reps: 0 }],
+                  sets: [...(exercise.sets || []), { weight: 0, reps: 0 }],
                 }
               : exercise
           ),
@@ -106,7 +108,9 @@ export default function workoutReducer(state, action) {
             exercise.id === action.payload.exerciseId
               ? {
                   ...exercise,
-                  sets: exercise.sets.filter((_, i) => i !== action.payload.setIndex),
+                  sets: exercise.sets.filter(
+                    (_, i) => i !== action.payload.setIndex
+                  ),
                 }
               : exercise
           ),
@@ -138,7 +142,6 @@ export default function workoutReducer(state, action) {
         ...state,
         templates: [...state.templates, action.payload],
       };
-
 
     default:
       return state;

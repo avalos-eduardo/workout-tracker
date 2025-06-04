@@ -44,3 +44,14 @@
   text-align: right;
   font-style: italic;
 }
+
+@media screen and (max-width: 675px) {
+  .past-workout h2 {
+    font-size: 1rem;
+  }
+
+  .exercise-left,
+  .exercise-right {
+    font-size: 0.9rem;
+  }
+}

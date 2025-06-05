@@ -19,7 +19,7 @@ export default function WorkoutExercise({ exercise, dispatch }) {
       payload: {
         exerciseId: exercise.id,
         setIndex: index,
-        updates: { [field]: Number(value) },
+        updates: { [field]: value },
       },
     });
   };
@@ -43,7 +43,7 @@ export default function WorkoutExercise({ exercise, dispatch }) {
           <label>Weight (lbs):</label>
           <input
             type="number"
-            placeholder="Weight"
+            placeholder="0"
             value={set.weight}
             min="0"
             onChange={(e) => handleChange(index, "weight", e.target.value)}
@@ -51,7 +51,7 @@ export default function WorkoutExercise({ exercise, dispatch }) {
           <label>Reps:</label>
           <input
             type="number"
-            placeholder="Reps"
+            placeholder="0"
             value={set.reps}
             min="0"
             onChange={(e) => handleChange(index, "reps", e.target.value)}

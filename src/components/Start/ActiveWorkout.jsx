@@ -10,8 +10,14 @@ export default function ActiveWorkout() {
   const navigate = useNavigate();
   const [elapsedTime, setElapsedTime] = useState(0);
   const [editableTitle, setEditableTitle] = useState(
-    state.title || "New Workout"
+    state.currentWorkout?.title || "New Workout"
   );
+
+  useEffect(() => {
+    if (state.currentWorkout?.title) {
+      setEditableTitle(state.currentWorkout.title);
+    }
+  }, [state.currentWorkout?.title]);
 
   useEffect(() => {
     if (!state.currentWorkout.startTime) return;

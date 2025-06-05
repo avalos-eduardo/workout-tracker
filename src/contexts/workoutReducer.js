@@ -46,7 +46,7 @@ export default function workoutReducer(state, action) {
             ...state.currentWorkout.exercises,
             {
               ...action.payload,
-              sets: [{ weight: 0, reps: 0 }],
+              sets: [{ weight: "", reps: "" }],
             },
           ],
         },
@@ -72,7 +72,7 @@ export default function workoutReducer(state, action) {
             exercise.id === action.payload.exerciseId
               ? {
                   ...exercise,
-                  sets: [...(exercise.sets || []), { weight: 0, reps: 0 }],
+                  sets: [...(exercise.sets || []), { weight: "", reps: "" }],
                 }
               : exercise
           ),

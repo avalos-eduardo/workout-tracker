@@ -125,6 +125,7 @@ export default function workoutReducer(state, action) {
           {
             ...state.currentWorkout,
             endTime: new Date().toISOString(),
+            dateCompleted: new Date().toISOString(),
             id: Date.now(),
           },
         ],

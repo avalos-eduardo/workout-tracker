@@ -16,13 +16,20 @@ export default function Exercises() {
   useEffect(() => {
     const fetchExercises = async () => {
       const stored = localStorage.getItem("exercises");
+      const today = new Date().toISOString().split("T")[0];
+
       if (stored) {
-        dispatch({ type: "SET_EXERCISES", payload: JSON.parse(stored) });
-      } else {
-        const fetched = await getExerciseInfo();
-        localStorage.setItem("exercises", JSON.stringify(fetched));
-        dispatch({ type: "SET_EXERCISES", payload: fetched });
+        const parsed = JSON.parse(stored);
+
+        if (parsed.date === today) {
+          dispatch({ type: "SET_EXERCISES", payload: parsed.data });
+          setLoading(false);
+          return;
+        }
       }
+
+      const fetched = await getExerciseInfo();
+      dispatch({ type: "SET_EXERCISES", payload: fetched });
       setLoading(false);
     };
 

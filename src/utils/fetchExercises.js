@@ -28,6 +28,10 @@ export const getExerciseInfo = async () => {
         })
 
         const exercises = (await Promise.all(exercisePromises)).flat();
+
+        const today = new Date().toISOString().split("T")[0];
+        localStorage.setItem("exercises", JSON.stringify({ date: today, data: exercises }));
+
         return exercises;
 
     } catch (error){

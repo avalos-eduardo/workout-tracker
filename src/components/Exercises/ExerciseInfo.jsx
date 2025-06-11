@@ -11,9 +11,14 @@ export default function ExerciseInfo() {
   useEffect(() => {
     const stored = localStorage.getItem("exercises");
     if (stored) {
-      const allExercises = JSON.parse(stored);
-      const found = allExercises.find((ex) => ex.id === id);
-      setExcercise(found);
+      try {
+        const parsed = JSON.parse(stored);
+        const allExercises = Array.isArray(parsed.data) ? parsed.data : [];
+        const found = allExercises.find((ex) => ex.id === id);
+        setExcercise(found);
+      } catch (e) {
+        console.error("Failed to parse stored exercises:", e);
+      }
     }
   }, [id]);
 

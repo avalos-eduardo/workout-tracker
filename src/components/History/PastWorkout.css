@@ -45,6 +45,21 @@
   font-style: italic;
 }
 
+.delete-button {
+  background-color: rgb(154, 13, 13);
+  color: white;
+  text-align: center;
+  text-align-last: center;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+  border-radius: 5px;
+  border: none;
+  height: 1.5rem;
+  width: 10rem;
+  cursor: pointer;
+  margin-top: .5rem;
+}
+
 @media screen and (max-width: 675px) {
   .past-workout h2 {
     font-size: 1rem;

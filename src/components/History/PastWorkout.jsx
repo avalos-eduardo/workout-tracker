@@ -1,7 +1,7 @@
 import "./PastWorkout.css";
 import { capitalizeWords } from "../../utils/capitalizeWords";
 
-export default function PastWorkout({ workout }) {
+export default function PastWorkout({ workout, dispatch }) {
   const start = new Date(workout.startTime);
   const end = new Date(workout.endTime);
   const durationMs = end - start;
@@ -23,6 +23,12 @@ export default function PastWorkout({ workout }) {
       const currentScore = current.weight * current.reps;
       return currentScore > bestScore ? current : best;
     });
+  };
+
+  const handleDelete = () => {
+    if (window.confirm("Delete this workout?")) {
+      dispatch({ type: "DELETE_WORKOUT", payload: workout.id });
+    }
   };
 
   return (
@@ -50,6 +56,9 @@ export default function PastWorkout({ workout }) {
           );
         })}
       </div>
+      <button className="delete-button" onClick={handleDelete}>
+        Delete Workout
+      </button>
     </div>
   );
 }

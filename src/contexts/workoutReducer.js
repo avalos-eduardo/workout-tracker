@@ -138,6 +138,14 @@ export default function workoutReducer(state, action) {
         currentWorkout: null,
       };
 
+    case "DELETE_WORKOUT":
+      return {
+        ...state,
+        workoutHistory: state.workoutHistory.filter(
+          (workout) => workout.id !== action.payload
+        ),
+      }
+
     case "ADD_TEMPLATE":
       return {
         ...state,

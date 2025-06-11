@@ -1,16 +1,25 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./ProfilePicture.css";
 
 export default function ProfilePicture() {
   const [image, setImage] = useState(null);
   const fileInputRef = useRef();
 
+  useEffect(() => {
+    const savedImage = localStorage.getItem("profilePicture");
+    if (savedImage) {
+      setImage(savedImage);
+    }
+  }, []);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setImage(reader.result);
+        const dataURL = reader.result;
+        setImage(dataURL);
+        localStorage.setItem("profilePicture", dataURL);
       };
       reader.readAsDataURL(file);
     }

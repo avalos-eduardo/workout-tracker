@@ -24,7 +24,6 @@ export default function AddExercises() {
         dispatch({ type: "SET_EXERCISES", payload: parsed.data });
       } else {
         const fetched = await getExerciseInfo();
-        localStorage.setItem("exercises", JSON.stringify(fetched));
         dispatch({ type: "SET_EXERCISES", payload: fetched });
       }
       setLoading(false);

@@ -18,8 +18,10 @@ export default function AddExercises() {
   useEffect(() => {
     const fetchExercises = async () => {
       const stored = localStorage.getItem("exercises");
+
       if (stored) {
-        dispatch({ type: "SET_EXERCISES", payload: JSON.parse(stored) });
+        const parsed = JSON.parse(stored);
+        dispatch({ type: "SET_EXERCISES", payload: parsed.data });
       } else {
         const fetched = await getExerciseInfo();
         localStorage.setItem("exercises", JSON.stringify(fetched));

@@ -2,7 +2,7 @@
     color: white;
     background-color: #1d495f;
     margin: 0rem 4rem 2rem 4rem;
-    border-radius: 12px;
+    border-radius: 15px;
     border: none;
     text-align: center;
     height: 2.25rem;
@@ -28,12 +28,21 @@
     font-size: 1.15rem;
     letter-spacing: 1px;
     overflow: hidden ;
-    border-radius: 12px;
+    border-radius: 15px;
     border: none;
     cursor: pointer;
     overflow: hidden;
     height: 2.25rem;
     width: 15rem;
+}
+
+.template-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 40px;
+    margin: 0rem 4rem 0rem 4rem;
+    padding: 0rem 0rem 2rem 0rem;
+    height: auto;
 }
 
 @media screen and (max-width: 675px) {
@@ -46,4 +55,10 @@
         font-size: .9rem;
         margin: 2rem 2rem 2rem 0rem;
     }
+
+    .template-list {
+        margin: 0rem 2rem 0rem 2rem;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
 }

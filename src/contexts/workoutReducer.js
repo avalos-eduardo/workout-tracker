@@ -18,6 +18,7 @@ export default function workoutReducer(state, action) {
         ...state,
         currentWorkout: {
           title: "New Workout",
+          id: crypto.randomUUID(),
           startTime: Date.now(),
           exercises: [],
         },
@@ -126,7 +127,6 @@ export default function workoutReducer(state, action) {
             ...state.currentWorkout,
             endTime: new Date().toISOString(),
             dateCompleted: new Date().toISOString(),
-            id: Date.now(),
           },
         ],
         currentWorkout: null,
@@ -151,6 +151,26 @@ export default function workoutReducer(state, action) {
         ...state,
         templates: [...state.templates, action.payload],
       };
+
+    case "START_WORKOUT_FROM_TEMPLATE": {
+      const template = action.payload;
+
+      return {
+        ...state,
+        currentWorkout: {
+          title: template.title || "Workout from Template",
+          startTime: Date.now(),
+          id: crypto.randomUUID(),
+          exercises: template.exercises.map((ex) => ({
+            ...ex,
+            sets: ex.sets.map(() => ({
+              weight: "",
+              reps: "",
+            })),
+          })),
+        },
+      };
+    }
 
     default:
       return state;

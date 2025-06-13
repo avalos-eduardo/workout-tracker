@@ -152,6 +152,14 @@ export default function workoutReducer(state, action) {
         templates: [...state.templates, action.payload],
       };
 
+    case "DELETE_TEMPLATE":
+      return {
+        ...state,
+        templates: state.templates.filter(
+          (template) => template.id !== action.payload
+        )
+      }
+
     case "START_WORKOUT_FROM_TEMPLATE": {
       const template = action.payload;
 

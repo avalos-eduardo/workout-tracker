@@ -9,6 +9,12 @@ export default function Template({ template, dispatch }) {
     navigate("/start/active");
   };
 
+  const handleDeleteTemplate = () => {
+    if (window.confirm("Delete this template?")) {
+      dispatch({ type: "DELETE_TEMPLATE", payload: template.id });
+    }
+  };
+
   return (
     <div className="template">
       <div className="template-card-header">
@@ -30,7 +36,9 @@ export default function Template({ template, dispatch }) {
         >
           Start Workout
         </button>
-        <button className="delete-template">Delete</button>
+        <button className="delete-template" onClick={handleDeleteTemplate}>
+          Delete
+        </button>
       </div>
     </div>
   );

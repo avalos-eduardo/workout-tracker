@@ -13,6 +13,10 @@ export default function Start() {
     navigate("/start/active");
   };
 
+  const handleStartNewTemplate = () => {
+    navigate("/start/add-template");
+  };
+
   return (
     <>
       <Heading headingTitle="Start" />
@@ -21,7 +25,9 @@ export default function Start() {
       </button>
       <div className="template-header">
         <Heading headingTitle="Templates" />
-        <button className="add-new-template">Add New</button>
+        <button className="add-new-template" onClick={handleStartNewTemplate}>
+          Add New
+        </button>
       </div>
       <section className="template-list">
         {state.templates.map((template) => (

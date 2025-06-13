@@ -1,0 +1,55 @@
+.add-template-section {
+    display: flex;
+    flex-direction: column;
+    padding: 0 4rem 2rem 4rem;
+}
+
+.template-title-input {
+    background-color: transparent;
+    height: 2rem;
+    width: 20rem;
+    border-radius: 0px;
+    border: none;
+    font-size: 1.65rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    margin: 0 0 .5rem 0 ;
+}
+
+.template-title-input:focus {
+    outline: none;
+}
+
+.template-title-input:hover {
+    border-radius: 8px;
+    border: 2px solid black;
+}
+
+.template-page-buttons > * {
+    width: 10rem;
+    height: 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #183d50;
+    color: white;
+    margin: 2rem 1rem 1rem 0;
+    cursor: pointer;
+    font-family: "Play", sans-serif;
+}
+
+.cancel-template {
+    background-color: rgb(154, 13, 13);
+}
+
+@media screen and (max-width: 675px) {
+    .add-template-section {
+        padding: 0 2rem 2rem 2rem;
+    }
+
+    .template-page-buttons > * {
+        font-size: .8rem;
+        width: 100%;
+        margin: 1rem 1rem 1rem 0;
+    }
+}

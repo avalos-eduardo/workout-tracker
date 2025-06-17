@@ -1,6 +1,6 @@
 import "./AddTemplate.css";
 import Heading from "../Common/Heading";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useWorkoutContext } from "../../contexts/workoutContext";
 import { useNavigate } from "react-router-dom";
 
@@ -9,20 +9,23 @@ export default function AddTemplate() {
   const navigate = useNavigate();
 
   const [editableTitle, setEditableTitle] = useState(
-    `Template # ${state.templates.length + 1}`
+    state.currentTemplate?.title || "New Template"
   );
 
+  useEffect(() => {
+    if (state.currentTemplate?.title) {
+      setEditableTitle(state.currentTemplate.title);
+    }
+  }, [state.currentTemplate?.title]);
+
   const handleTitleChange = (e) => {
-    setEditableTitle(e.target.value);
+    const updated = e.target.value;
+    setEditableTitle(updated);
+    dispatch({ type: "UPDATE_TEMPLATE_TITLE", payload: updated });
   };
 
   const handleAddTemplate = () => {
-    const newTemplate = {
-      id: crypto.randomUUID(),
-      title: editableTitle,
-      exercises: [],
-    };
-    dispatch({ type: "ADD_TEMPLATE", payload: newTemplate });
+    dispatch({ type: "COMPLETE_TEMPLATE" });
     navigate("/start");
   };
 

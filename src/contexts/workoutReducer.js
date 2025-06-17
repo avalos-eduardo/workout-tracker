@@ -3,6 +3,7 @@ export const initialWorkoutState = {
   currentWorkout: null,
   workoutHistory: [],
   templates: [],
+  currentTemplate: null,
 };
 
 export default function workoutReducer(state, action) {
@@ -159,6 +160,37 @@ export default function workoutReducer(state, action) {
           (template) => template.id !== action.payload
         )
       }
+
+    case "START_TEMPLATE":
+      return {
+        ...state,
+        currentTemplate: {
+          id: crypto.randomUUID(),
+          title: "New Template",
+          exercises: [],
+        }
+      }
+
+    case "UPDATE_TEMPLATE_TITLE":
+      return {
+        ...state, 
+        currentTemplate: {
+          ...state.currentTemplate,
+          title: action.payload,
+        }
+      }
+
+    case "COMPLETE_TEMPLATE":
+      return {
+        ...state,
+        templates: [
+          ...state.templates,
+          {
+            ...state.currentTemplate
+          },
+        ],
+        currentTemplate: null,
+      }  
 
     case "START_WORKOUT_FROM_TEMPLATE": {
       const template = action.payload;

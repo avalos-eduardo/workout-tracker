@@ -14,6 +14,7 @@ export default function Start() {
   };
 
   const handleStartNewTemplate = () => {
+    dispatch({ type: "START_TEMPLATE" });
     navigate("/start/add-template");
   };
 

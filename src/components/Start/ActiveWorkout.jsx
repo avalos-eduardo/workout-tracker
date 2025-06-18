@@ -76,6 +76,7 @@ export default function ActiveWorkout() {
               />
             ))
           )}
+          <hr />
         </section>
 
         <div className="active-buttons">

@@ -1,4 +1,4 @@
-[
+export const quotes = [
     {
       "quoteText": "The last three or four reps is what makes the muscle grow. This area of pain divides a champion from someone else.",
       "quoteAuthor": "Arnold Schwarzenegger"

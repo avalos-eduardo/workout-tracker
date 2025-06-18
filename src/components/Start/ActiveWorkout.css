@@ -29,6 +29,10 @@
     padding: .5rem 0 .5rem 0;
 }
 
+.exercises-list p {
+    margin-bottom: 2rem;
+}
+
 .active-buttons > * {
     width: 10rem;
     height: 2rem;

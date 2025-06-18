@@ -16,10 +16,67 @@ function loadTemplatesFromLocalStorage() {
   try {
     const stored = localStorage.getItem("templates");
     const parsed = JSON.parse(stored);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
+    if (Array.isArray(parsed)) return parsed;
+  } catch (error) {
+    console.error("Failed to parse templates from localStorage:", error);
   }
+
+  const hasInitialized = localStorage.getItem("hasInitializedTemplates");
+  if (!hasInitialized) {
+    const defaultTemplates = [
+      {
+        id: crypto.randomUUID(),
+        title: "Upper Body Day Example",
+        exercises: [
+          {
+            name: "Barbell Bench Press",
+            sets: [{}, {}, {}],
+          },
+          {
+            name: "Barbell Incline Row",
+            sets: [{}, {}, {}],
+          },
+          {
+            name: "Dumbbell Biceps Curl",
+            sets: [{}, {}, {}],
+          },
+          {
+            name: "Dumbbell Incline Triceps Extension",
+            sets: [{}, {}, {}],
+          },
+          {
+            name: "Dumbbell Lateral Raise",
+            sets: [{}, {}, {}],
+          },
+        ],
+      },
+      {
+        id: crypto.randomUUID(),
+        title: "Lower Body Day Example",
+        exercises: [
+          {
+            name: "Barbell Front Squat",
+            sets: [{}, {}, {}],
+          },
+          {
+            name: "Barbell Romanian Deadlift",
+            sets: [{}, {}, {}],
+          },
+          {
+            name: "Barbell Standing Calf Raise",
+            sets: [{}, {}, {}],
+          },
+        ],
+      },
+    ];
+
+    localStorage.setItem("templates", JSON.stringify(defaultTemplates));
+    localStorage.setItem("hasInitializedTemplates", "true");
+
+    return defaultTemplates;
+  }
+
+  return [];
 }
 
 export function WorkoutProvider({ children }) {

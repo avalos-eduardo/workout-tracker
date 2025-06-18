@@ -12,10 +12,21 @@ function loadWorkoutHistoryFromLocalStorage() {
   }
 }
 
+function loadTemplatesFromLocalStorage() {
+  try {
+    const stored = localStorage.getItem("templates");
+    const parsed = JSON.parse(stored);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
 export function WorkoutProvider({ children }) {
   const [state, dispatch] = useReducer(workoutReducer, {
     ...initialWorkoutState,
     workoutHistory: loadWorkoutHistoryFromLocalStorage(),
+    templates: loadTemplatesFromLocalStorage(),
   });
 
   useEffect(() => {
@@ -24,6 +35,10 @@ export function WorkoutProvider({ children }) {
       JSON.stringify(state.workoutHistory)
     );
   }, [state.workoutHistory]);
+
+  useEffect(() => {
+    localStorage.setItem("templates", JSON.stringify(state.templates));
+  }, [state.templates]);
 
   return (
     <WorkoutContext.Provider value={{ state, dispatch }}>

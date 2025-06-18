@@ -12,6 +12,7 @@ import History from "./components/History/History";
 import ActiveWorkout from "./components/Start/ActiveWorkout";
 import AddExercises from "./components/Start/AddExercises";
 import AddTemplate from "./components/Start/AddTemplate";
+import AddExercisesToTemplate from "./components/Start/AddExercisesToTemplate";
 import { WorkoutProvider } from "./contexts/WorkoutProvider";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -31,6 +32,10 @@ export default function App() {
             <Route path="/start/active" element={<ActiveWorkout />} />
             <Route path="/start/add-exercises" element={<AddExercises />} />
             <Route path="/start/add-template" element={<AddTemplate />} />
+            <Route
+              path="/start/add-exercises-to-template"
+              element={<AddExercisesToTemplate />}
+            />
           </Routes>
         </Router>
       </WorkoutProvider>

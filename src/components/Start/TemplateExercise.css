@@ -1,0 +1,42 @@
+.exercise-title h2 {
+    max-width: 20rem;
+}
+
+.set-count {
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+}
+
+.set-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    gap: 20px;
+}
+
+.delete-set {
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(154, 13, 13);
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Play", sans-serif;
+    margin-top: 1rem;
+    height: 1.75rem;
+    width: 8rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 675px) {
+    .set-buttons {
+        gap: 0px;
+    }
+
+    .set-buttons > * {
+        font-size: .8rem;
+    }
+    
+    .delete-set {
+        width: 100%;
+    }
+}

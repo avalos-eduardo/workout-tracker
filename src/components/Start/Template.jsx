@@ -1,4 +1,5 @@
 import "./Template.css";
+import { capitalizeWords } from "../../utils/capitalizeWords";
 import { useNavigate } from "react-router-dom";
 
 export default function Template({ template, dispatch }) {
@@ -24,8 +25,12 @@ export default function Template({ template, dispatch }) {
       <div className="template-card-info">
         {template.exercises.map((exercise) => (
           <div key={exercise.id} className="exercise-row">
-            <div className="exercise-left">{exercise.name}</div>
-            <div className="exercise-right">Sets: {exercise.sets.length}</div>
+            <div className="exercise-left">
+              <p>
+                {capitalizeWords(exercise.name)} x {exercise.sets.length}
+                {exercise.sets.length === 1 ? " set" : " sets"}
+              </p>
+            </div>
           </div>
         ))}
       </div>

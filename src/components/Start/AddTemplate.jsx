@@ -3,6 +3,7 @@ import Heading from "../Common/Heading";
 import { useEffect, useState } from "react";
 import { useWorkoutContext } from "../../contexts/workoutContext";
 import { useNavigate } from "react-router-dom";
+import TemplateExercise from "./TemplateExercise";
 
 export default function AddTemplate() {
   const { state, dispatch } = useWorkoutContext();
@@ -32,6 +33,11 @@ export default function AddTemplate() {
   const handleCancelTemplate = () => {
     navigate("/start");
   };
+
+  const handleAddExercises = () => {
+    navigate("/start/add-exercises-to-template");
+  };
+
   return (
     <>
       <Heading headingTitle="Add Template" />
@@ -43,8 +49,25 @@ export default function AddTemplate() {
         />
         <hr />
 
+        <section className="exercises-list">
+          {state.currentTemplate.exercises.length === 0 ? (
+            <p>No exercises yet. Add some below!</p>
+          ) : (
+            state.currentTemplate.exercises.map((exercise) => (
+              <TemplateExercise
+                key={exercise.id}
+                exercise={exercise}
+                dispatch={dispatch}
+              />
+            ))
+          )}
+          <hr />
+        </section>
+
         <div className="template-page-buttons">
-          <button className="add-exercises">Add Exercises</button>
+          <button className="add-exercises" onClick={handleAddExercises}>
+            Add Exercises
+          </button>
           <button className="add-template" onClick={handleAddTemplate}>
             Complete Template
           </button>

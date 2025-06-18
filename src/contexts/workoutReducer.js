@@ -180,6 +180,92 @@ export default function workoutReducer(state, action) {
         }
       }
 
+    case "ADD_EXERCISE_TO_TEMPLATE": {
+      const alreadyAdded = state.currentTemplate.exercises.some(
+        (ex) => ex.id === action.payload.id
+      );
+      if (alreadyAdded) return state;
+
+      return {
+        ...state,
+        currentTemplate: {
+          ...state.currentTemplate,
+          exercises: [
+            ...state.currentTemplate.exercises,
+            {
+              ...action.payload,
+              sets: [],
+            }
+          ]
+        }
+      }
+    }
+
+    case "REMOVE_EXERCISE_FROM_TEMPLATE":
+      return {
+        ...state,
+        currentTemplate: {
+          ...state.currentTemplate,
+          exercises: state.currentTemplate.exercises.filter(
+            (exercise) => exercise.id !== action.payload
+          ),
+        },
+      };
+
+    case "ADD_TEMPLATE_SET":
+      return {
+        ...state,
+        currentTemplate: {
+          ...state.currentTemplate,
+          exercises: state.currentTemplate.exercises.map((exercise) =>
+            exercise.id === action.payload.exerciseId
+              ? {
+                  ...exercise,
+                  sets: [...(exercise.sets || []), { weight: "", reps: "" }],
+                }
+              : exercise
+          ),
+        },
+      };
+
+    case "UPDATE_TEMPLATE_SET":
+      return {
+        ...state,
+        currentTemplate: {
+          ...state.currentTemplate,
+          exercises: state.currentTemplate.exercises.map((exercise) =>
+            exercise.id === action.payload.exerciseId
+              ? {
+                  ...exercise,
+                  sets: exercise.sets.map((set, index) =>
+                    index === action.payload.setIndex
+                      ? { ...set, ...action.payload.updates }
+                      : set
+                  ),
+                }
+              : exercise
+          ),
+        },
+      };
+
+    case "REMOVE_TEMPLATE_SET":
+      return {
+        ...state,
+        currentTemplate: {
+          ...state.currentTemplate,
+          exercises: state.currentTemplate.exercises.map((exercise) =>
+            exercise.id === action.payload.exerciseId
+              ? {
+                  ...exercise,
+                  sets: exercise.sets.filter(
+                    (_, i) => i !== action.payload.setIndex
+                  ),
+                }
+              : exercise
+          ),
+        },
+      };
+
     case "COMPLETE_TEMPLATE":
       return {
         ...state,

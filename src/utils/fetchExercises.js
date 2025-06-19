@@ -1,12 +1,13 @@
-import { API_KEY } from "./API_KEY";
-
 const options = {
     method: "GET",
     headers: {
-        "x-rapidapi-key": API_KEY,
+        "x-rapidapi-key": import.meta.env.VITE_RAPIDAPI_KEY,
 		"x-rapidapi-host": "exercisedb.p.rapidapi.com"
     }
 };
+
+console.log("API KEY:", import.meta.env.VITE_RAPIDAPI_KEY);
+
 
 const equipmentAllowed = ["barbell", "dumbbell", "smith machine"];
 

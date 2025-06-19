@@ -6,9 +6,6 @@ const options = {
     }
 };
 
-console.log("API KEY:", import.meta.env.VITE_RAPIDAPI_KEY);
-
-
 const equipmentAllowed = ["barbell", "dumbbell", "smith machine"];
 
 export const getExerciseInfo = async () => {

@@ -49,6 +49,7 @@ export default function Dashboard() {
         <div className="profile-container">
           <Widget
             title={<UserGreeting />}
+            className="profile-widget"
             children={
               <>
                 <ProfilePicture />

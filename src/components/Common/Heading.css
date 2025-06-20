@@ -1,13 +1,14 @@
 .heading {
-    font-family: "Play", sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    margin: 0 0 1.25rem 0;
-    padding: 2rem 4rem 1rem 4rem;
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  margin: 0 0 1.25rem 0;
+  padding: 2rem 4rem 1rem 4rem;
 }
 
 @media screen and (max-width: 675px) {
-    .heading {
-        padding: 2rem;
-    }
+  .heading {
+    padding: 2rem;
+    font-size: 2rem;
+  }
 }

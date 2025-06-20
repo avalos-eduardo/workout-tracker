@@ -1,120 +1,123 @@
 .widget-container {
-    display: flex;
-    height: auto;
-    padding: 0rem 4rem 4rem 4rem;
-    min-height: 30rem;
+  display: flex;
+  height: auto;
+  padding: 0rem 4rem 4rem 4rem;
+  min-height: 30rem;
 }
 
 .profile-container {
-    flex: 1;
-    overflow: hidden;
+  flex: 1;
 }
 
 .profile-container div {
-    text-align: center;
-    justify-content: space-around;
+  text-align: center;
+  justify-content: space-around;
 }
 
 .date-title {
-    font-size: 2.5rem;
-    font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 700;
 }
 
 .date {
-    font-size: 2.5rem;
-    font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .misc-widget-container {
-    display: flex;
-    flex-direction: column;
-    flex: 2;
-    padding: 0rem 0rem 0rem 2rem;
-    min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  padding: 0rem 0rem 0rem 2rem;
+  min-height: 30rem;
 }
 
 .workout-widgets {
-    display: flex;
-    flex: 1;
-    gap: 1rem;
-    min-height: 12rem;
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  min-height: 12rem;
 }
 
-.workout-widgets > div {
-    flex: 1;
+.workout-widgets .widget {
+  flex: 1;
 }
 
 .workouts-count-container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    font-size: 4rem;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
 }
 
 .inspiration-widget {
-    flex: 2;
-    padding: 3rem 0rem 0rem 0rem;
-    max-height: 21rem;
+  flex: 2;
+  padding: 1rem 0rem 0rem 0rem;
 }
 
 .quote-container {
-    display: flex;
-    padding: 2rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 
 .quote-text {
-    font-style: italic;
-    text-align: center;
-    margin-bottom: .75rem;
-    font-size: 1.3rem;
-    line-height: 1.5;
-    word-wrap: break-word;
-  }
-  
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
 .quote-author {
-    font-weight: 600;
-    text-align: right;
-    align-self: flex-end;
-    font-size: 1.15rem;
+  font-weight: 600;
+  text-align: right;
+  align-self: flex-end;
+  font-size: 1.15rem;
 }
 
 @media screen and (max-width: 675px) {
-    .widget-container {
-        display: flex;
-        height: auto;
-        padding: 0rem 2rem 4rem 2rem;
-        min-height: 30rem;
-        flex-direction: column;
-    }
+  .widget-container {
+    display: flex;
+    height: auto;
+    padding: 0rem 2rem 4rem 2rem;
+    min-height: 30rem;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-    .workout-widgets {
-        gap: 3rem;
-        flex-direction: column;
-        min-height: 30rem;
-    }
+  .workout-widgets {
+    flex-direction: column;
+    min-height: 30rem;
+    gap: 2rem;
+  }
 
-    .misc-widget-container {
-        height: auto;
-        padding: 0rem;
-        margin-top: 3rem;
-    }
+  .workouts-count-container {
+    margin-top: 3rem;
+  }
 
+  .misc-widget-container {
+    height: auto;
+    padding: 0rem;
+  }
+
+  .inspiration-widget {
+    padding: 2rem 0rem 0rem 0rem;
+  }
 }
 
 @media screen and (max-width: 760px) {
-    .date-title {
-        font-size: 1.75rem;
-        font-weight: 700;
-    }
+  .date-title {
+    font-size: 1.75rem;
+  }
 
-    .date {
-        font-size: 1.5rem;
-    }
-
+  .date {
+    font-size: 1.5rem;
+  }
 }

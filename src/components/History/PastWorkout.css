@@ -1,9 +1,9 @@
 .past-workout {
   background-color: white;
-  border: 4px solid black;
-  border-radius: 15px;
+  box-shadow: rgba(61, 61, 61, 0.2) 0px 8px 20px 0px;
+  border-radius: 18px;
   margin-bottom: 2rem;
-  padding: 1rem;
+  padding: 1rem 1.25rem 0.65rem 1.25rem;
 }
 
 .past-workout h2 {
@@ -57,7 +57,7 @@
   height: 1.5rem;
   width: 10rem;
   cursor: pointer;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 @media screen and (max-width: 675px) {

@@ -1,6 +1,6 @@
 import "./AddTemplate.css";
 import Heading from "../Common/Heading";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useWorkoutContext } from "../../contexts/workoutContext";
 import { useNavigate } from "react-router-dom";
 import TemplateExercise from "./TemplateExercise";
@@ -19,7 +19,7 @@ export default function AddTemplate() {
     }
   }, [state.currentTemplate?.title]);
 
-  const handleTitleChange = (e) => {
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const updated = e.target.value;
     setEditableTitle(updated);
     dispatch({ type: "UPDATE_TEMPLATE_TITLE", payload: updated });
@@ -50,10 +50,10 @@ export default function AddTemplate() {
         <hr />
 
         <section className="exercises-list">
-          {state.currentTemplate.exercises.length === 0 ? (
+          {state.currentTemplate?.exercises.length === 0 ? (
             <p>No exercises yet. Add some below!</p>
           ) : (
-            state.currentTemplate.exercises.map((exercise) => (
+            state.currentTemplate?.exercises.map((exercise) => (
               <TemplateExercise
                 key={exercise.id}
                 exercise={exercise}

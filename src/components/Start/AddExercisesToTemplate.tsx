@@ -1,17 +1,16 @@
-import "./AddExercises.css";
 import searchIcon from "../../assets/search.png";
 import Heading from "../Common/Heading";
 import { capitalizeWords } from "../../utils/capitalizeWords";
 import { useState, useEffect } from "react";
 import { useWorkoutContext } from "../../contexts/workoutContext";
-import { getExerciseInfo } from "../../utils/fetchExercises";
+import { getExerciseInfo, Exercise } from "../../utils/fetchExercises";
 import { useNavigate } from "react-router-dom";
 
-export default function AddExercises() {
+export default function AddExercisesToTemplate() {
   const { state, dispatch } = useWorkoutContext();
-  const [searchInput, setSearchInput] = useState("");
-  const [selectedEquipment, setSelectedEquipment] = useState("all");
-  const [selectedMuscleGroup, setSelectedMuscleGroup] = useState("all");
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [selectedEquipment, setSelectedEquipment] = useState<string>("all");
+  const [selectedMuscleGroup, setSelectedMuscleGroup] = useState<string>("all");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -36,7 +35,7 @@ export default function AddExercises() {
     }
   }, [dispatch, state.exercises.length]);
 
-  const filteredExercises = state.exercises.filter((exercise) => {
+  const filteredExercises: Exercise[] = state.exercises.filter((exercise) => {
     const matchesSearch = exercise.name
       .toLowerCase()
       .includes(searchInput.toLowerCase());
@@ -50,9 +49,9 @@ export default function AddExercises() {
     return matchesSearch && matchesEquipment && matchesMuscle;
   });
 
-  const handleAddExercise = (exercise) => {
-    dispatch({ type: "ADD_EXERCISE_TO_WORKOUT", payload: exercise });
-    navigate("/start/active");
+  const handleAddExercise = (exercise: Exercise) => {
+    dispatch({ type: "ADD_EXERCISE_TO_TEMPLATE", payload: exercise });
+    navigate("/start/add-template");
   };
 
   return (
@@ -96,7 +95,9 @@ export default function AddExercises() {
           </select>
         </div>
         <div className="cancel">
-          <button onClick={() => navigate("/start/active")}>Cancel</button>
+          <button onClick={() => navigate("/start/add-template")}>
+            Cancel
+          </button>
         </div>
       </header>
 

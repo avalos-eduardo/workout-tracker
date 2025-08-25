@@ -1,4 +1,6 @@
-export const initialWorkoutState = {
+import { WorkoutAction, WorkoutState } from "./types";
+
+export const initialWorkoutState: WorkoutState = {
   exercises: [],
   currentWorkout: null,
   workoutHistory: [],
@@ -6,7 +8,7 @@ export const initialWorkoutState = {
   currentTemplate: null,
 };
 
-export default function workoutReducer(state, action) {
+export default function workoutReducer(state: WorkoutState, action: WorkoutAction): WorkoutState {
   switch (action.type) {
     case "SET_EXERCISES":
       return {
@@ -26,6 +28,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "UPDATE_WORKOUT_TITLE":
+      if (!state.currentWorkout) return state;
       return {
         ...state,
         currentWorkout: {
@@ -35,6 +38,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "ADD_EXERCISE_TO_WORKOUT": {
+      if (!state.currentWorkout) return state;
       const alreadyAdded = state.currentWorkout.exercises.some(
         (ex) => ex.id === action.payload.id
       );
@@ -55,6 +59,7 @@ export default function workoutReducer(state, action) {
       };
     }
     case "REMOVE_EXERCISE_FROM_WORKOUT":
+      if (!state.currentWorkout) return state;
       return {
         ...state,
         currentWorkout: {
@@ -66,6 +71,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "ADD_SET":
+      if (!state.currentWorkout) return state;
       return {
         ...state,
         currentWorkout: {
@@ -82,6 +88,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "UPDATE_SET":
+      if (!state.currentWorkout) return state;
       return {
         ...state,
         currentWorkout: {
@@ -102,6 +109,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "REMOVE_SET":
+      if (!state.currentWorkout) return state;
       return {
         ...state,
         currentWorkout: {
@@ -120,6 +128,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "FINISH_WORKOUT":
+      if (!state.currentWorkout) return state;
       return {
         ...state,
         workoutHistory: [
@@ -172,6 +181,7 @@ export default function workoutReducer(state, action) {
       }
 
     case "UPDATE_TEMPLATE_TITLE":
+      if (!state.currentTemplate) return state;
       return {
         ...state, 
         currentTemplate: {
@@ -181,6 +191,7 @@ export default function workoutReducer(state, action) {
       }
 
     case "ADD_EXERCISE_TO_TEMPLATE": {
+      if (!state.currentTemplate) return state;
       const alreadyAdded = state.currentTemplate.exercises.some(
         (ex) => ex.id === action.payload.id
       );
@@ -202,6 +213,7 @@ export default function workoutReducer(state, action) {
     }
 
     case "REMOVE_EXERCISE_FROM_TEMPLATE":
+      if (!state.currentTemplate) return state;
       return {
         ...state,
         currentTemplate: {
@@ -213,6 +225,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "ADD_TEMPLATE_SET":
+      if (!state.currentTemplate) return state;
       return {
         ...state,
         currentTemplate: {
@@ -229,6 +242,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "UPDATE_TEMPLATE_SET":
+      if (!state.currentTemplate) return state;
       return {
         ...state,
         currentTemplate: {
@@ -249,6 +263,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "REMOVE_TEMPLATE_SET":
+      if (!state.currentTemplate) return state;
       return {
         ...state,
         currentTemplate: {
@@ -267,6 +282,7 @@ export default function workoutReducer(state, action) {
       };
 
     case "COMPLETE_TEMPLATE":
+      if (!state.currentTemplate) return state;
       return {
         ...state,
         templates: [

@@ -1,7 +1,13 @@
 import "./TemplateExercise.css";
 import { capitalizeWords } from "../../utils/capitalizeWords";
+import { WorkoutExercise, WorkoutAction } from "../../contexts/types";
 
-export default function TemplateExercise({ exercise, dispatch }) {
+interface TemplateExerciseProps {
+  exercise: WorkoutExercise,
+  dispatch: React.Dispatch<WorkoutAction>,
+}
+
+export default function TemplateExercise({ exercise, dispatch }: TemplateExerciseProps) {
   const handleAddSet = () => {
     dispatch({
       type: "ADD_TEMPLATE_SET",

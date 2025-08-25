@@ -1,10 +1,16 @@
 import "./PastWorkout.css";
 import { capitalizeWords } from "../../utils/capitalizeWords";
+import { Workout, WorkoutAction } from "../../contexts/types";
 
-export default function PastWorkout({ workout, dispatch }) {
+interface PastWorkoutProps {
+  workout: Workout,
+  dispatch: React.Dispatch<WorkoutAction>,
+}
+
+export default function PastWorkout({ workout, dispatch }: PastWorkoutProps) {
   const start = new Date(workout.startTime);
-  const end = new Date(workout.endTime);
-  const durationMs = end - start;
+  const end = new Date(workout.endTime ?? workout.startTime);
+  const durationMs = end.getTime() - start.getTime();
   const minutes = Math.floor(durationMs / 60000);
   const seconds = Math.floor((durationMs % 60000) / 1000);
   const duration = `${minutes}m ${seconds}s`;
@@ -15,12 +21,13 @@ export default function PastWorkout({ workout, dispatch }) {
     day: "numeric",
   });
 
-  const getBestSet = (sets = []) => {
-    if (!sets.length) return null;
+  const getBestSet = (sets = workout.exercises[0]?.sets): typeof sets[number] | null => {
+    if (!sets || sets.length === 0) return null;
+    
     // Define "best" as the one with highest weight x reps
     return sets.reduce((best, current) => {
-      const bestScore = best.weight * best.reps;
-      const currentScore = current.weight * current.reps;
+      const bestScore = Number(best.weight) * Number(best.reps);
+      const currentScore = Number(current.weight) * Number(current.reps);
       return currentScore > bestScore ? current : best;
     });
   };

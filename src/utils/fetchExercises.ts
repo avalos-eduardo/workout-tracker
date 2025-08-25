@@ -6,16 +6,25 @@ const options = {
     }
 };
 
-const equipmentAllowed = ["barbell", "dumbbell", "smith machine"];
+export interface Exercise {
+    id: string,
+    name: string,
+    bodyPart: string;
+    instructions: string;
+    equipment: string;
+    gifUrl: string;
+}
 
-export const getExerciseInfo = async () => {
+const equipmentAllowed: Array<"barbell" | "dumbbell" | "smith machine"> = ["barbell", "dumbbell", "smith machine"];
+
+export const getExerciseInfo = async (): Promise<Exercise[]> => {
     try{
         const exercisePromises = equipmentAllowed.map(async (equipment) => {
             const response = await fetch(`https://exercisedb.p.rapidapi.com/exercises/equipment/${equipment}?limit=150&offset=0`, options);
             const data =  await response.json();
-            return data.map((exercise) => {
+            return data.map((exercise: Exercise) => {
                 return {
-                    name: exercise.name,
+                    name: exercise.name, 
                     id: exercise.id,
                     bodyPart: exercise.bodyPart,
                     instructions: exercise.instructions,

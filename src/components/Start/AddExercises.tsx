@@ -1,16 +1,17 @@
+import "./AddExercises.css";
 import searchIcon from "../../assets/search.png";
 import Heading from "../Common/Heading";
 import { capitalizeWords } from "../../utils/capitalizeWords";
 import { useState, useEffect } from "react";
 import { useWorkoutContext } from "../../contexts/workoutContext";
-import { getExerciseInfo } from "../../utils/fetchExercises";
+import { Exercise, getExerciseInfo } from "../../utils/fetchExercises";
 import { useNavigate } from "react-router-dom";
 
-export default function AddExercisesToTemplate() {
+export default function AddExercises() {
   const { state, dispatch } = useWorkoutContext();
-  const [searchInput, setSearchInput] = useState("");
-  const [selectedEquipment, setSelectedEquipment] = useState("all");
-  const [selectedMuscleGroup, setSelectedMuscleGroup] = useState("all");
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [selectedEquipment, setSelectedEquipment] = useState<string>("all");
+  const [selectedMuscleGroup, setSelectedMuscleGroup] = useState<string>("all");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ export default function AddExercisesToTemplate() {
       const stored = localStorage.getItem("exercises");
 
       if (stored) {
-        const parsed = JSON.parse(stored);
+        const parsed: { date: string; data: Exercise[] } = JSON.parse(stored);
         dispatch({ type: "SET_EXERCISES", payload: parsed.data });
       } else {
         const fetched = await getExerciseInfo();
@@ -35,7 +36,7 @@ export default function AddExercisesToTemplate() {
     }
   }, [dispatch, state.exercises.length]);
 
-  const filteredExercises = state.exercises.filter((exercise) => {
+  const filteredExercises: Exercise[] = state.exercises.filter((exercise) => {
     const matchesSearch = exercise.name
       .toLowerCase()
       .includes(searchInput.toLowerCase());
@@ -49,9 +50,9 @@ export default function AddExercisesToTemplate() {
     return matchesSearch && matchesEquipment && matchesMuscle;
   });
 
-  const handleAddExercise = (exercise) => {
-    dispatch({ type: "ADD_EXERCISE_TO_TEMPLATE", payload: exercise });
-    navigate("/start/add-template");
+  const handleAddExercise = (exercise:Exercise) => {
+    dispatch({ type: "ADD_EXERCISE_TO_WORKOUT", payload: exercise });
+    navigate("/start/active");
   };
 
   return (
@@ -95,9 +96,7 @@ export default function AddExercisesToTemplate() {
           </select>
         </div>
         <div className="cancel">
-          <button onClick={() => navigate("/start/add-template")}>
-            Cancel
-          </button>
+          <button onClick={() => navigate("/start/active")}>Cancel</button>
         </div>
       </header>
 

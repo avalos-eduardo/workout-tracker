@@ -8,7 +8,7 @@ export default function Navbar() {
   const [navbarIsOpen, setNavbarIsOpen] = useState(false);
 
   const handleNavbarExpand = () => {
-    setNavbarIsOpen(!navbarIsOpen);
+    setNavbarIsOpen((prev) => !prev);
   };
 
   return (

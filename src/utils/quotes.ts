@@ -1,4 +1,10 @@
-export const quotes = [
+export interface Quote{
+  quoteText: string,
+  quoteAuthor: string
+
+}
+
+export const quotes:Quote[] = [
     {
       "quoteText": "The last three or four reps is what makes the muscle grow. This area of pain divides a champion from someone else.",
       "quoteAuthor": "Arnold Schwarzenegger"

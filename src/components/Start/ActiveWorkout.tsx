@@ -8,8 +8,8 @@ import { useNavigate } from "react-router-dom";
 export default function ActiveWorkout() {
   const { state, dispatch } = useWorkoutContext();
   const navigate = useNavigate();
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const [editableTitle, setEditableTitle] = useState(
+  const [elapsedTime, setElapsedTime] = useState<number>(0);
+  const [editableTitle, setEditableTitle] = useState<string>(
     state.currentWorkout?.title || "New Workout"
   );
 
@@ -20,23 +20,25 @@ export default function ActiveWorkout() {
   }, [state.currentWorkout?.title]);
 
   useEffect(() => {
-    if (!state.currentWorkout.startTime) return;
+    if (!state.currentWorkout?.startTime) return;
 
     const interval = setInterval(() => {
+      if (!state.currentWorkout) return;
+
       setElapsedTime(Date.now() - state.currentWorkout.startTime);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [state.currentWorkout.startTime]);
+  }, [state.currentWorkout?.startTime]);
 
-  const formatTime = (ms) => {
+  const formatTime = (ms: number) => {
     const totalSeconds = Math.floor(ms / 1000);
     const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
     const seconds = String(totalSeconds % 60).padStart(2, "0");
     return `${minutes}:${seconds}`;
   };
 
-  const handleTitleChange = (e) => {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const updated = e.target.value;
     setEditableTitle(updated);
     dispatch({ type: "UPDATE_WORKOUT_TITLE", payload: updated });
@@ -65,10 +67,10 @@ export default function ActiveWorkout() {
         <hr />
 
         <section className="exercises-list">
-          {state.currentWorkout.exercises.length === 0 ? (
+          {state.currentWorkout?.exercises.length === 0 ? (
             <p>No exercises yet. Add some below!</p>
           ) : (
-            state.currentWorkout.exercises.map((exercise) => (
+            state.currentWorkout?.exercises.map((exercise) => (
               <WorkoutExercise
                 key={exercise.id}
                 exercise={exercise}

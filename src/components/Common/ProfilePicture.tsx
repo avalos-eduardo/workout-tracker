@@ -2,8 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import "./ProfilePicture.css";
 
 export default function ProfilePicture() {
-  const [image, setImage] = useState(null);
-  const fileInputRef = useRef();
+  const [image, setImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const savedImage = localStorage.getItem("profilePicture");
@@ -12,12 +12,12 @@ export default function ProfilePicture() {
     }
   }, []);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        const dataURL = reader.result;
+        const dataURL = reader.result as string;
         setImage(dataURL);
         localStorage.setItem("profilePicture", dataURL);
       };
@@ -26,6 +26,7 @@ export default function ProfilePicture() {
   };
 
   const triggerFileInput = () => {
+    if (!fileInputRef.current) throw Error("fileInputRef is not assigned");
     fileInputRef.current.click();
   };
 

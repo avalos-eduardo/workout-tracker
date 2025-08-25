@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./UserGreeting.css";
 
 export default function UserGreeting() {
-  const [name, setName] = useState("User");
+  const [name, setName] = useState<string>("User");
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       setIsEditing(false);
     }

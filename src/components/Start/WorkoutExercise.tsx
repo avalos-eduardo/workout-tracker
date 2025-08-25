@@ -1,19 +1,25 @@
 import "./WorkoutExercise.css";
 import { capitalizeWords } from "../../utils/capitalizeWords";
+import { WorkoutExercise as WorkoutExerciseType, WorkoutAction } from "../../contexts/types";
 
-export default function WorkoutExercise({ exercise, dispatch }) {
+interface WorkoutExerciseProps {
+  exercise: WorkoutExerciseType;
+  dispatch: React.Dispatch<WorkoutAction>;
+}
+
+export default function WorkoutExercise({ exercise, dispatch }: WorkoutExerciseProps) {
   const handleAddSet = () => {
     dispatch({ type: "ADD_SET", payload: { exerciseId: exercise.id } });
   };
 
-  const handleRemoveSet = (index) => {
+  const handleRemoveSet = (index:number) => {
     dispatch({
       type: "REMOVE_SET",
       payload: { exerciseId: exercise.id, setIndex: index },
     });
   };
 
-  const handleChange = (index, field, value) => {
+  const handleChange = (index:number, field: "weight" | "reps", value: string) => {
     dispatch({
       type: "UPDATE_SET",
       payload: {

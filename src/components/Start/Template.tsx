@@ -1,8 +1,14 @@
 import "./Template.css";
 import { capitalizeWords } from "../../utils/capitalizeWords";
 import { useNavigate } from "react-router-dom";
+import { Template as TemplateType, WorkoutAction } from "../../contexts/types";
 
-export default function Template({ template, dispatch }) {
+interface TemplateProps {
+  template: TemplateType,
+  dispatch: React.Dispatch<WorkoutAction>,
+}
+
+export default function Template({ template, dispatch }: TemplateProps) {
   const navigate = useNavigate();
 
   const handleStartWorkoutFromTemplate = () => {

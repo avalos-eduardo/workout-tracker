@@ -4,28 +4,25 @@ import ProfilePicture from "../Common/ProfilePicture";
 import UserGreeting from "../Common/UserGreeting";
 import Widget from "../Common/Widget";
 import fetchQuote from "../../utils/fetchQuotes";
+import { Quote } from "../../utils/quotes";
 import { useWorkoutContext } from "../../contexts/workoutContext";
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const date = new Date().toLocaleDateString();
-  const [quote, setQuote] = useState(null);
+  const [quote, setQuote] = useState<Quote | null>(null);
+
   const { state } = useWorkoutContext();
   const workoutsThisWeek = state.workoutHistory.filter((workout) =>
-    isDateInCurrentWeek(workout.dateCompleted)
+    workout.dateCompleted && isDateInCurrentWeek(workout.dateCompleted)
   ).length;
 
   useEffect(() => {
-    const getQuote = async () => {
-      const quotes = await fetchQuote();
-      if (quotes && quotes.length > 0) {
-        setQuote(quotes[0]);
-      }
-    };
-    getQuote();
+    const dailyQuote = fetchQuote();
+    setQuote(dailyQuote);
   }, []);
 
-  function isDateInCurrentWeek(dateString) {
+  function isDateInCurrentWeek(dateString: string):boolean {
     const workoutDate = new Date(dateString);
     const now = new Date();
 

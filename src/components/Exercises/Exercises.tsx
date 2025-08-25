@@ -3,14 +3,14 @@ import searchIcon from "../../assets/search.png";
 import ExerciseList from "./ExerciseList";
 import Heading from "../Common/Heading";
 import { useEffect, useState } from "react";
-import { getExerciseInfo } from "../../utils/fetchExercises";
+import { Exercise, getExerciseInfo } from "../../utils/fetchExercises";
 import { useWorkoutContext } from "../../contexts/workoutContext";
 
 export default function Exercises() {
   const { state, dispatch } = useWorkoutContext();
-  const [searchInput, setSearchInput] = useState("");
-  const [selectedEquipment, setSelectedEquipment] = useState("all");
-  const [selectedMuscleGroup, setSelectedMuscleGroup] = useState("all");
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [selectedEquipment, setSelectedEquipment] = useState<string>("all");
+  const [selectedMuscleGroup, setSelectedMuscleGroup] = useState<string>("all");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Exercises() {
       const today = new Date().toISOString().split("T")[0];
 
       if (stored) {
-        const parsed = JSON.parse(stored);
+        const parsed: { date: string; data: Exercise[] } = JSON.parse(stored);
 
         if (parsed.date === today) {
           dispatch({ type: "SET_EXERCISES", payload: parsed.data });
@@ -40,7 +40,7 @@ export default function Exercises() {
     }
   }, [dispatch, state.exercises.length]);
 
-  const filteredExercises = state.exercises.filter((exercise) => {
+  const filteredExercises: Exercise[] = state.exercises.filter((exercise) => {
     const matchesSearch = exercise.name
       .toLowerCase()
       .includes(searchInput.toLowerCase());

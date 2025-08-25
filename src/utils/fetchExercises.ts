@@ -10,7 +10,7 @@ export interface Exercise {
     id: string,
     name: string,
     bodyPart: string;
-    instructions: string;
+    instructions: string[];
     equipment: string;
     gifUrl: string;
 }

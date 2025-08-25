@@ -44,7 +44,7 @@ export default function ExerciseInfo() {
       <div className="instructions">
         <h1>Instructions:</h1>
         <ul>
-          {exercise.instructions.split("\n").map((step, index) => (
+          {exercise.instructions?.map((step, index) => (
             <li key={index}>{step}</li>
           ))}
         </ul>

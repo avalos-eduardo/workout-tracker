@@ -1,14 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./UserGreeting.css";
 
 export default function UserGreeting() {
   const [name, setName] = useState<string>("User");
   const [isEditing, setIsEditing] = useState(false);
 
+  useEffect(() => {
+    const storedName = localStorage.getItem("username");
+    if (storedName) {
+      setName(storedName);
+    }
+  }, [])
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       setIsEditing(false);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.target.value;
+    setName(newName);
+    localStorage.setItem("username", newName);
   };
 
   return (
@@ -17,7 +30,7 @@ export default function UserGreeting() {
         <input
           type="text"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleChange}
           onBlur={() => setIsEditing(false)}
           onKeyDown={handleKeyDown}
           placeholder="Enter Name Here"

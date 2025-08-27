@@ -305,6 +305,7 @@ export default function workoutReducer(state: WorkoutState, action: WorkoutActio
           id: crypto.randomUUID(),
           exercises: template.exercises.map((ex) => ({
             ...ex,
+            id: crypto.randomUUID(),
             sets: ex.sets.map(() => ({
               weight: "",
               reps: "",

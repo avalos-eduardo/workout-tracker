@@ -17,7 +17,7 @@ function loadTemplatesFromLocalStorage(): Template[] {
   try {
     const stored = localStorage.getItem("templates");
     const parsed = stored ? JSON.parse(stored) : [];
-    if (Array.isArray(parsed)) return parsed;
+    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
   } catch (error) {
     console.error("Failed to parse templates from localStorage:", error);
   }
